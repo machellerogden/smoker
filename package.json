@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "DEBUG=smoker node ./bin/www"
+    "start": "DEBUG=smoker nodemon ./bin/www",
+    "postinstall": "npm install -g nodemon"
   },
   "dependencies": {
     "express": "~3.4.8",

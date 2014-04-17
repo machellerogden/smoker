@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodemon
 var debug = require('debug')('smoker');
 var app = require('../app');
 

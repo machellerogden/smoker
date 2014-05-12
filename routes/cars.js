@@ -31,8 +31,8 @@ module.exports = {
     },
 
     update: function (req, res) {
-        var result;
-        var id = parseInt(req.params.id, 10);
+        var id, result;
+        id = parseInt(req.params.id, 10);
         _.each(cars, function (car, index, list) {
             if (car.id === id) {
                 list[index] = {
@@ -47,12 +47,14 @@ module.exports = {
     },
 
     destroy: function (req, res) {
-        var id = parseInt(req.params.id, 10);
+        var id, match;
+        id = parseInt(req.params.id, 10);
         _.each(cars, function (car, index, list) {
             if (car.id === id) {
-                list.splice(index, index + 1);
+                match = id;
             }
         });
+        cars.splice(match, match + 1);
         res.json({});
     }
 };

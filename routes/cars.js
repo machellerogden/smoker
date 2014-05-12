@@ -1,4 +1,6 @@
-var cars, get, getById, create, update, destroy;
+var _, cars, get, getById, create, update, destroy;
+
+_ = require('underscore-node');
 
 cars = [
     {
@@ -15,11 +17,10 @@ module.exports = {
     },
 
     getById: function (req, res) {
-        res.json(cars[0]);
+        res.json(_.findWhere(cars, { id: req.params.id }));
     },
 
     create: function (req, res) {
-        console.log('req.body: ', req.body);
         var car = {
             id: cars.length,
             make: req.body.make,
@@ -30,18 +31,28 @@ module.exports = {
     },
 
     update: function (req, res) {
+        var result;
         var id = parseInt(req.params.id, 10);
-        cars[id] = {
-            id: id,
-            make: req.body.make,
-            model: req.body.model
-        };
-        res.json(cars[id]);
+        _.each(cars, function (car, index, list) {
+            if (car.id === id) {
+                list[index] = {
+                    id: id,
+                    make: req.body.make,
+                    model: req.body.model
+                };
+                result = list[index];
+            }
+        });
+        res.json(result);
     },
 
     destroy: function (req, res) {
-        var id = req.params.id;
-        cars.splice(id, id + 1);
+        var id = parseInt(req.params.id, 10);
+        _.each(cars, function (car, index, list) {
+            if (car.id === id) {
+                list.splice(index, index + 1);
+            }
+        });
         res.json({});
     }
 };

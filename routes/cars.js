@@ -22,7 +22,7 @@ module.exports = {
 
     create: function (req, res) {
         var car = {
-            id: cars.length,
+            id: (cars.length + 1) * 111,
             make: req.body.make,
             model: req.body.model
         };
@@ -51,10 +51,10 @@ module.exports = {
         id = parseInt(req.params.id, 10);
         _.each(cars, function (car, index, list) {
             if (car.id === id) {
-                match = id;
+                match = index;
             }
         });
-        cars.splice(match, match + 1);
-        res.json({});
+        cars.splice(match, 1);
+        res.json(cars);
     }
 };

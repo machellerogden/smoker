@@ -3,11 +3,14 @@ var _, cars, get, getById, create, update, destroy;
 _ = require('underscore-node');
 
 cars = [
-    {
-        id: 0,
-        make: 'Honda',
-        model: 'Accord'
-    }
+    { listingId: 0, make: 'Tesla', model: 'Model S' },
+    { listingId: 1, make: 'Ford', model: 'F150' },
+    { listingId: 2, make: 'Ford', model: 'Edge' },
+    { listingId: 3, make: 'Hyundai', model: 'Sonata' },
+    { listingId: 4, make: 'Honda', model: 'Civic' },
+    { listingId: 5, make: 'Kia', model: 'Sorento' },
+    { listingId: 6, make: 'Geo', model: 'Metro' },
+    { listingId: 7, make: 'Lamborghini', model: 'Gallardo' }
 ];
 
 module.exports = {
@@ -17,12 +20,12 @@ module.exports = {
     },
 
     getById: function (req, res) {
-        res.json(_.findWhere(cars, { id: req.params.id }));
+        res.json(_.findWhere(cars, { listingId: req.params.listingId }));
     },
 
     create: function (req, res) {
         var car = {
-            id: (cars.length + 1) * 111,
+            listingId: cars.length,
             make: req.body.make,
             model: req.body.model
         };
@@ -32,11 +35,11 @@ module.exports = {
 
     update: function (req, res) {
         var id, result;
-        id = parseInt(req.params.id, 10);
+        id = parseInt(req.params.listingId, 10);
         _.each(cars, function (car, index, list) {
-            if (car.id === id) {
+            if (car.listingId === id) {
                 list[index] = {
-                    id: id,
+                    listingId: listingId,
                     make: req.body.make,
                     model: req.body.model
                 };
@@ -50,7 +53,7 @@ module.exports = {
         var id, match;
         id = parseInt(req.params.id, 10);
         _.each(cars, function (car, index, list) {
-            if (car.id === id) {
+            if (car.listingId === id) {
                 match = index;
             }
         });

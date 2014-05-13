@@ -5,4 +5,5 @@ module.exports = function (app, routes) {
     app.post('/cars', routes.cars.create);
     app.put('/cars/:listingId', routes.cars.update);
     app['delete']('/cars/:listingId', routes.cars.destroy);
+    app.post('/someLoggingService', routes.logging.create);
 };

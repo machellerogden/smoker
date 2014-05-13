@@ -20,7 +20,8 @@ module.exports = {
     },
 
     getById: function (req, res) {
-        res.json(_.findWhere(cars, { listingId: req.params.listingId }));
+        var id = parseInt(req.params.listingId, 10);
+        res.json(_.findWhere(cars, { listingId: id }));
     },
 
     create: function (req, res) {
@@ -39,7 +40,7 @@ module.exports = {
         _.each(cars, function (car, index, list) {
             if (car.listingId === id) {
                 list[index] = {
-                    listingId: listingId,
+                    listingId: id,
                     make: req.body.make,
                     model: req.body.model
                 };
@@ -51,7 +52,7 @@ module.exports = {
 
     destroy: function (req, res) {
         var id, match;
-        id = parseInt(req.params.id, 10);
+        id = parseInt(req.params.listingId, 10);
         _.each(cars, function (car, index, list) {
             if (car.listingId === id) {
                 match = index;

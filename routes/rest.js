@@ -43,7 +43,11 @@ module.exports = function (options) {
         },
 
         create: function (req, res) {
-            var item = items[uuid.v1()];
+            var item = {};
+            item.id = uuid.v1();
+            _.each(properties, function (property) {
+                item[property] = req.body[property];
+            });
             items.push(item);
             res.json(item);
         },

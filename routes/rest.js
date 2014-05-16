@@ -6,8 +6,8 @@ uuid = require('node-uuid');
 
 module.exports = function (options) {
     var optionsIsObject, optionsIsArray, properties, items, defaultValues, i;
-    optionsIsObject = _.isObject(options);
     optionsIsArray = _.isArray(options);
+    optionsIsObject = _.isObject(options) && !optionsIsArray;
     if (optionsIsObject) {
         properties = _.keys(options);
     } else if (optionsIsArray) {
@@ -26,7 +26,7 @@ module.exports = function (options) {
             } else if (optionsIsObject) {
                 newItem[k] = v;
             } else {
-                newItem[k] = defaultValues[Math.floor(Math.random() * defaultValues.length)];
+                newItem[v] = defaultValues[Math.floor(Math.random() * defaultValues.length)];
             }
         });
         items.push(newItem);

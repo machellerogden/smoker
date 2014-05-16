@@ -5,15 +5,29 @@ _ = require('underscore-node');
 uuid = require('node-uuid');
 
 module.exports = function (options) {
-    var properties, items, defaultValues, i;
-    properties = _.keys(options);
+    var optionsIsObject, optionsIsArray, properties, items, defaultValues, i;
+    optionsIsObject = _.isObject(options);
+    optionsIsArray = _.isArray(options);
+    if (optionsIsObject) {
+        properties = _.keys(options);
+    } else if (optionsIsArray) {
+        properties = options;
+    } else {
+        throw new Error('bad options');
+    }
     items = [];
     defaultValues = [ 'foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud' ];
     for (i = 0; i < 10; i++) {
         var newItem = {};
         newItem.id = uuid.v1();
         _.each(options, function (v, k) {
-            newItem[k] = v[Math.floor(Math.random() * v.length)] || defaultValues[Math.floor(Math.random() * defaultValues.length)];
+            if (optionsIsObject && _.isArray(v)) {
+                newItem[k] = v[Math.floor(Math.random() * v.length)];
+            } else if (optionsIsObject) {
+                newItem[k] = v;
+            } else {
+                newItem[k] = defaultValues[Math.floor(Math.random() * defaultValues.length)];
+            }
         });
         items.push(newItem);
     }

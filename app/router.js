@@ -2,5 +2,5 @@ var restful = require('./restful');
 
 module.exports = function (app, routes) {
     app.get('/', routes.index);
-    restful.create(app, 'person', [ 'firstName', 'lastName' ]);
+    restful.create(app, 'person', { firstName: [ 'Bob', 'Sue', 'John', 'Sally' ], lastName: [ 'Smith', 'Jones', 'Brown', 'White' ] });
 };

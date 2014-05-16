@@ -4,16 +4,18 @@ var _, uuid, items, get, getById, create, update, destroy;
 _ = require('underscore-node');
 uuid = require('node-uuid');
 
-module.exports = function (properties) {
-    var items, values, i;
+module.exports = function (options) {
+    var properties, items, defaultValues, i;
+    properties = _.keys(options);
     items = [];
-    values = [ 'foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud' ];
+    defaultValues = [ 'foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'xyzzy', 'thud' ];
     for (i = 0; i < 10; i++) {
-        items[i] = {};
-        items[i].id = uuid.v1();
-        _.each(properties, function (property) {
-            items[i][property] = values[Math.floor(Math.random() * values.length)];
+        var newItem = {};
+        newItem.id = uuid.v1();
+        _.each(options, function (v, k) {
+            newItem[k] = v[Math.floor(Math.random() * v.length)] || defaultValues[Math.floor(Math.random() * defaultValues.length)];
         });
+        items.push(newItem);
     }
     return {
 

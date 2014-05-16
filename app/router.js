@@ -1,9 +1,6 @@
+var restful = require('./restful');
+
 module.exports = function (app, routes) {
     app.get('/', routes.index);
-    app.get('/cars', routes.cars.get);
-    app.get('/cars/:listingId', routes.cars.getById);
-    app.post('/cars', routes.cars.create);
-    app.put('/cars/:listingId', routes.cars.update);
-    app['delete']('/cars/:listingId', routes.cars.destroy);
-    app.post('/someLoggingService', routes.logging.create);
+    restful.create(app, 'person', [ 'firstName', 'lastName' ]);
 };

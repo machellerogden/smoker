@@ -1,4 +1,13 @@
-Super simple mock server.
+     (       *        )      )       (
+     )\ )  (  `    ( /(   ( /(       )\ )
+    (()/(  )\))(   )\())  )\()) (   (()/(
+     /(_))((_)()\ ((_)\ |((_)\  )\   /(_))
+    (_))  (_()((_)  ((_)|_ ((_)((_) (_))
+    / __| |  \/  | / _ \| |/ / | __|| _ \
+    \__ \ | |\/| || (_) | ' <  | _| |   /
+    |___/ |_|  |_| \___/ _|\_\ |___||_|_\
+
+Smoker is a quick and dirty mock server.
 
 # Install
 
@@ -12,4 +21,4 @@ See app/router.js for examples.
 
 # Run
 
-`npm start`
+``npm start``

@@ -10,7 +10,8 @@ Smoker is a quick and dirty mock server.
 
 ## Config
 
-See app/router.js for examples.
+See
+[app/router.js](https://github.com/machellerogden/smoker/blob/master/app/router.js) for examples.
 
 ## Run
 

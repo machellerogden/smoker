@@ -1,24 +1,17 @@
-     (       *        )      )       (
-     )\ )  (  `    ( /(   ( /(       )\ )
-    (()/(  )\))(   )\())  )\()) (   (()/(
-     /(_))((_)()\ ((_)\ |((_)\  )\   /(_))
-    (_))  (_()((_)  ((_)|_ ((_)((_) (_))
-    / __| |  \/  | / _ \| |/ / | __|| _ \
-    \__ \ | |\/| || (_) | ' <  | _| |   /
-    |___/ |_|  |_| \___/ _|\_\ |___||_|_\
+# SMOKER
 
 Smoker is a quick and dirty mock server.
 
-# Install
+## Install
 
     git clone https://github.com/machellerogden/smoker.git
     cd smoker
     npm install
 
-# Config
+## Config
 
 See app/router.js for examples.
 
-# Run
+## Run
 
 ``npm start``
